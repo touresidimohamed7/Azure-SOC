@@ -1,9 +1,8 @@
-# Building a SOC + Honeynet in Azure (Live Traffic)
-![Cloud Honeynet / SOC](https://i.imgur.com/ZWxe03e.jpg)
+![Building a SOC + Honeynet in Azure Live Traffic (2)](https://github.com/touresidimohamed7/Azure-SOC/assets/152078244/d46a545f-48aa-4803-afe8-7a0a6588eaca)
 
 ## Introduction
 
-In this activity, I build a mini honeynet in Azure and ingest log sources from various resources into a Log Analytics workspace, which is then used by Microsoft Sentinel to build attack maps, trigger alerts, and create incidents. I measured some security metrics in the insecure environment for 24 hours, apply some security controls to harden the environment, measure metrics for another 24 hours, then show the results below. The metrics we will show are:
+In this project, I construct a miniature honeynet on Azure, aggregating logs from diverse sources into a Log Analytics workspace. Microsoft Sentinel utilizes this data to generate attack maps, trigger alerts, and establish incidents. After assessing security metrics in an insecure environment for 24 hours, I implement security controls to fortify the setup, measure metrics for an additional 24 hours, and present the results below. The metrics we will show are:
 
 - SecurityEvent (Windows Event Logs)
 - Syslog (Linux Event Logs)
@@ -12,10 +11,13 @@ In this activity, I build a mini honeynet in Azure and ingest log sources from v
 - AzureNetworkAnalytics_CL (Malicious Flows allowed into our honeynet)
 
 ## Architecture Before Hardening / Security Controls
-![Architecture Diagram](https://i.imgur.com/aBDwnKb.jpg)
+![2](https://github.com/touresidimohamed7/Azure-SOC/assets/152078244/6ea88b84-06ec-4a7e-9c27-dd726c041ad8)
+
+
 
 ## Architecture After Hardening / Security Controls
-![Architecture Diagram](https://i.imgur.com/YQNa9Pp.jpg)
+![3](https://github.com/touresidimohamed7/Azure-SOC/assets/152078244/4ec29d01-0eb9-43d0-83db-a067dd711b02)
+
 
 The architecture of the mini honeynet in Azure consists of the following components:
 
@@ -32,23 +34,26 @@ For the "BEFORE" metrics, all resources were originally deployed, exposed to the
 For the "AFTER" metrics, Network Security Groups were hardened by blocking ALL traffic with the exception of my admin workstation, and all other resources were protected by their built-in firewalls as well as Private Endpoint
 
 ## Attack Maps Before Hardening / Security Controls
-![NSG Allowed Inbound Malicious Flows](https://i.imgur.com/1qvswSX.png)<br>
-![Linux Syslog Auth Failures](https://i.imgur.com/G1YgZt6.png)<br>
-![Windows RDP/SMB Auth Failures](https://i.imgur.com/ESr9Dlv.png)<br>
+<img width="1390" alt="nsg-malicious" src="https://github.com/touresidimohamed7/Azure-SOC/assets/152078244/7a26d394-bd9e-4703-8fbd-5d6c20bc0892">
+<img width="1388" alt="syslog-ssh-auth-fail" src="https://github.com/touresidimohamed7/Azure-SOC/assets/152078244/5de866bf-6eef-45fa-841b-8750dd8e3761">
+<img width="1374" alt="windows-rdp-auth-fail" src="https://github.com/touresidimohamed7/Azure-SOC/assets/152078244/e417ba13-8227-40a1-bea9-d65999c3fc6e">
+<img width="1372" alt="mssql-auth-fail" src="https://github.com/touresidimohamed7/Azure-SOC/assets/152078244/764e9910-72c9-4fcd-9596-887f685b7de1">
 
 ## Metrics Before Hardening / Security Controls
 
 The following table shows the metrics we measured in our insecure environment for 24 hours:
-Start Time 2023-03-15 17:04:29
-Stop Time 2023-03-16 17:04:29
+Start Time 2023-09-17 11:03:27
+Stop Time 2023-09-18 17:03:27
+
+
 
 | Metric                   | Count
 | ------------------------ | -----
-| SecurityEvent            | 19470
-| Syslog                   | 3028
-| SecurityAlert            | 10
-| SecurityIncident         | 348
-| AzureNetworkAnalytics_CL | 843
+| SecurityEvent            | 18360
+| Syslog                   | 3017
+| SecurityAlert            | 12
+| SecurityIncident         | 337
+| AzureNetworkAnalytics_CL | 732
 
 ## Attack Maps Before Hardening / Security Controls
 
@@ -57,19 +62,19 @@ Stop Time 2023-03-16 17:04:29
 ## Metrics After Hardening / Security Controls
 
 The following table shows the metrics we measured in our environment for another 24 hours, but after we have applied security controls:
-Start Time 2023-03-18 15:37
-Stop Time	2023-03-19 15:37
+Start Time 2023-09-20 13:07
+Stop Time	2023-09-21 13:07
 
 | Metric                   | Count
 | ------------------------ | -----
-| SecurityEvent            | 8778
-| Syslog                   | 25
+| SecurityEvent            | 76667
+| Syslog                   | 29
 | SecurityAlert            | 0
 | SecurityIncident         | 0
 | AzureNetworkAnalytics_CL | 0
 
 ## Conclusion
 
-In this project, a mini honeynet was constructed in Microsoft Azure and log sources were integrated into a Log Analytics workspace. Microsoft Sentinel was employed to trigger alerts and create incidents based on the ingested logs. Additionally, metrics were measured in the insecure environment before security controls were applied, and then again after implementing security measures. It is noteworthy that the number of security events and incidents were drastically reduced after the security controls were applied, demonstrating their effectiveness.
+In this project, a miniature honeynet was established in Microsoft Azure, integrating log sources into a Log Analytics workspace. Microsoft Sentinel played a pivotal role in generating alerts and incidents based on the ingested logs. Furthermore, metrics were assessed in the insecure environment both before and after the application of security controls. Notably, the implementation of these controls led to a significant reduction in the number of security events and incidents, showcasing their efficacy.
 
-It is worth noting that if the resources within the network were heavily utilized by regular users, it is likely that more security events and alerts may have been generated within the 24-hour period following the implementation of the security controls.
+It's important to acknowledge that if the network resources were heavily utilized by regular users, there might have been a potential increase in security events and alerts within the 24-hour period following the implementation of the security controls.
