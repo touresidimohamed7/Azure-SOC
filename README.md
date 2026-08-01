@@ -1,6 +1,6 @@
 # Building a SOC + Honeynet in Azure (Live Traffic)
 
-![Building a SOC + Honeynet in Azure Live Traffic](YOUR_IMAGE_URL_HERE)
+![Building a SOC + Honeynet in Azure Live Traffic](https://github.com/touresidimohamed7/Azure-SOC/assets/152078244/d46a545f-48aa-4803-afe8-7a0a6588eaca)
 ## Introduction
 
 In this project, I constructed a miniature honeynet in Microsoft Azure to capture and analyze real-world cyber attack traffic. System and security logs were aggregated from multiple sources into a **Log Analytics Workspace**, where **Microsoft Sentinel** was configured to generate attack maps, trigger security alerts, and create incidents.
